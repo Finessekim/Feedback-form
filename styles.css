@@ -1,44 +1,120 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
+/* Default margin and padding */
+body, html {
+    margin: 0;
+    padding: 0;
 }
 
-h2 {
+/* Body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Container styling */
+.container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.container h1 {
+    margin-top: 0;
+    font-size: 28px;
     text-align: center;
 }
 
-form {
-    max-width: 600px;
-    margin: auto;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.container h2 {
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: normal;
 }
 
-label {
+.container b {
+    font-weight: bold;
+    color: #007bff; /* Candidate name highlight color */
+}
+
+/* Form styling */
+form {
+    margin-bottom: 20px;
+}
+
+form label {
     display: block;
     margin-bottom: 5px;
+    font-weight: bold;
 }
 
-input, textarea {
-    width: 100%;
+form input[type="text"],
+form input[type="email"],
+form textarea,
+form input[type="number"] {
+    width: calc(100% - 12px);
     padding: 8px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 3px;
+    font-size: 14px;
+    box-sizing: border-box;
 }
 
-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #28a745;
-    color: white;
+form input[type="number"] {
+    width: 50px;
+}
+
+form .button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
     border: none;
     border-radius: 3px;
     cursor: pointer;
+    font-size: 14px;
 }
 
-button:hover {
-    background-color: #218838;
+form .button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+        margin: 10px auto;
+        padding: 10px;
+    }
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+table th, table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+table th {
+    background-color: #007bff; 
+    color: #fff;
+}
+
+table th:first-child,
+table td:first-child {
+    min-width: 120px; 
+}
+
+table tr:nth-child(even) {
+    background-color: #f2f2f2; 
 }

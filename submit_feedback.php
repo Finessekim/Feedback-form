@@ -10,21 +10,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = "";
     $dbname = "campaign_feedback";
 
+    // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
 
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "INSERT INTO feedback (name, email, feedback, rating)
-            VALUES ('$name', '$email', '$feedback', '$rating')";
+    $stmt = $conn->prepare("INSERT INTO feedback (name, email, feedback, rating) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param("sssi", $name, $email, $feedback, $rating);
 
-    if ($conn->query($sql) === TRUE) {
+    // Execute the prepared statement
+    if ($stmt->execute()) {
         echo "New record created successfully";
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "Error: " . $stmt->error;
     }
 
+    header("Location: confirmation.php");
+        exit;
+    } else {
+        echo "Error: " . $stmt->error;
+
+    // Close statement and connection
+    $stmt->close();
     $conn->close();
 }
 ?>
